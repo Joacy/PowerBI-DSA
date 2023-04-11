@@ -71,7 +71,7 @@ st.markdown("""
 pais = st.sidebar.radio("País", (sorted(df_vendas["Pais"].unique())))
 
 
-col1.metric(label="Valor Total Vendido", value=f"{round((df_vendas['Total_Vendas'].sum()//10000)/100, 2)} Mi")
+col1.metric(label="Valor Total Vendido", value=f"{round(df_vendas['Total_Vendas'].sum()/1000000, 2)} Mi")
 
 col2.markdown("Total de Vendas por Categoria")
 df_total_vendas_por_categoria = df_vendas[['Total_Vendas', 'Categoria']].groupby(['Categoria']).sum().reset_index()
