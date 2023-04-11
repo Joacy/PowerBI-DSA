@@ -11,13 +11,19 @@ from plotly.subplots import make_subplots
 import pandas as pd
 from datetime import date, datetime, timedelta
 
+import requests
+import io
+
 st.set_page_config(
   page_title="Dashboard Analítico de Vendas Globais",
   page_icon="📈",
   layout="wide"
 )
 
-df_vendas = pd.read_csv("dataset.csv", sep=";")
+url = "https://raw.githubusercontent.com/Joacy/PowerBI-DSA/main/Cap02/dataset.csv"
+file = requests.get(url).content
+
+df_vendas = pd.read_csv(io.StringIO(file.decode('utf-8')), sep=";")
 
 datas = []
 anos = []
